@@ -15,8 +15,8 @@ mapKey('<C-l>', '<C-w>l') --Right
 mapKey('<leader>h', ':nohlsearch<CR>')
 
 -- indent 
---mapKey('<', '<gv', 'v')
---mapKey('>', '>gv', 'v')
+mapKey('<', '<gv', 'v')
+mapKey('>', '>gv', 'v')
 
 -- personal setting
 mapKey('<leader>w', ':w<CR>') -- save
