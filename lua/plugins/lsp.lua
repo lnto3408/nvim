@@ -1,3 +1,5 @@
+local keyMapper = require('utils.KeyMapper').mapKey
+
 return {
   {
     "williamboman/mason.nvim",
@@ -18,6 +20,23 @@ return {
         }
       })
     end
-  }
+  },
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      local lspconfig = require('lspconfig')
+      lspconfig.gopls.setup({})
+      lspconfig.lua_ls.setup({})
+      lspconfig.vimls.setup({})
+      lspconfig.clangd.setup({})
+      lspconfig.pylsp.setup({})
 
+      -- vim.lsp.buf.hover
+      -- vim.lsp.buf.definition
+      -- vim.lsp.buf.code_action
+      keyMapper('K', vim.lsp.buf.hover)
+      keyMapper('gd', vim.lsp.buf.definition)
+      keyMapper('<leader>ca', vim.lsp.buf.code_action)
+    end
+  }
 }

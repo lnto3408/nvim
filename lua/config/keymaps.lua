@@ -1,4 +1,4 @@
-local mapKey = require("utils.keyMapper").mapKey
+local mapKey = require("utils.KeyMapper").mapKey
 
 -- NeoTree toggle
 mapKey('<C-n>', ':Neotree toggle<cr>')
