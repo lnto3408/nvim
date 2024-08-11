@@ -27,7 +27,24 @@ mapKey("bn", ":bn<CR>") -- buffer next without leader
 mapKey("bp", ":bp<CR>") -- buffer prev without leader
 mapKey("<leader>vs", ":vs<CR>") -- split vertically
 mapKey("<leader>sp", ":sp<CR>") -- split split horizontal
-mapKey("<M-j>", ":move +1<CR>") -- move current line up
-mapKey("<M-k>", ":move -2<CR>") -- move current line down
-mapKey("<leader>cc", ":execute '!g++ -g -o ' . expand('%:r') . ' ' . expand('%') . ' && '. expand('%:r')<CR>")
+-- mapKey("<C-j>", ":move +1<CR>") -- move current line up
+-- mapKey("<C-k>", ":move -2<CR>") -- move current line down
+
+-- C++ complie for getting path ./ or absolut path
+_G.compile_and_run = function()
+	local file_dir = vim.fn.expand("%:p:h")
+	local current_dir = vim.fn.getcwd()
+	local output_file = vim.fn.expand("%:r")
+	local cmd = ""
+	if file_dir == current_dir then
+		cmd = string.format("g++ -std=c++17 -g -o %s %s && ./%s", output_file, vim.fn.expand("%"), output_file)
+	else
+		cmd =
+			string.format("g++ -std=c++17 -g -o %s %s && %s/%s", output_file, vim.fn.expand("%"), file_dir, output_file)
+	end
+	vim.cmd("!" .. cmd)
+end
+vim.api.nvim_set_keymap("n", "<leader>cc", ":lua compile_and_run()<CR>", { noremap = true, silent = true })
+
+-- mapKey("<leader>cc", ":execute '!g++ -g -o ' . expand('%:r') . ' ' . expand('%') . ' && '. expand('%:r')<CR>")
 mapKey("<leader>cu", ':echo expand("%:p")<CR>')
