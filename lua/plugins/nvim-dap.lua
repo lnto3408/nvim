@@ -14,6 +14,7 @@ return {
 		config = function()
 			local dap = require("dap")
 			local dapui = require("dapui")
+			require("telescope").load_extension("dap")
 			require("mason-nvim-dap").setup({
 				handlers = {},
 			})

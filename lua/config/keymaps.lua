@@ -29,5 +29,5 @@ mapKey("<leader>vs", ":vs<CR>") -- split vertically
 mapKey("<leader>sp", ":sp<CR>") -- split split horizontal
 mapKey("<M-j>", ":move +1<CR>") -- move current line up
 mapKey("<M-k>", ":move -2<CR>") -- move current line down
-mapKey("<leader>cc", ":execute '!g++ -g -o ' . expand('%:r') . ' ' . expand('%') . ' && ./'. expand('%:r')<CR>")
+mapKey("<leader>cc", ":execute '!g++ -g -o ' . expand('%:r') . ' ' . expand('%') . ' && '. expand('%:r')<CR>")
 mapKey("<leader>cu", ':echo expand("%:p")<CR>')
