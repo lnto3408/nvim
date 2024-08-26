@@ -10,11 +10,13 @@ return {
 			"nvim-telescope/telescope-dap.nvim",
 			"nvim-neotest/nvim-nio",
 			"jay-babu/mason-nvim-dap.nvim",
+			"mfussenegger/nvim-dap-python",
 		},
 		config = function()
 			local dap = require("dap")
 			local dapui = require("dapui")
 			require("telescope").load_extension("dap")
+			require("dap-python").setup("/usr/bin/python3")
 			require("mason-nvim-dap").setup({
 				handlers = {},
 			})
