@@ -11,12 +11,16 @@ return {
 			"nvim-neotest/nvim-nio",
 			"jay-babu/mason-nvim-dap.nvim",
 			"mfussenegger/nvim-dap-python",
+			"folke/neodev.nvim",
 		},
 		config = function()
 			local dap = require("dap")
 			local dapui = require("dapui")
 			require("telescope").load_extension("dap")
 			require("dap-python").setup("/usr/bin/python3")
+			require("neodev").setup({
+				library = { plugins = { "nvim-dap-ui" }, types = true },
+			})
 			require("mason-nvim-dap").setup({
 				handlers = {},
 			})
@@ -30,16 +34,18 @@ return {
 			dap.listeners.before.launch.dapui_config = function()
 				dapui.open()
 			end
-			dap.listeners.before.event_terminated.dapui_config = function()
-				dapui.close()
-			end
-			dap.listeners.before.event_exited.dapui_config = function()
-				dapui.close()
-			end
+			-- dap.listeners.before.event_terminated.dapui_config = function()
+			-- 	dapui.close()
+			-- end
+			-- dap.listeners.before.event_exited.dapui_config = function()
+			-- 	dapui.close()
+			-- end
 			keyMapper("<leader>db", dap.toggle_breakpoint)
 			keyMapper("<leader>dr", dap.continue)
 			keyMapper("<leader>dc", dap.clear_breakpoints)
 			keyMapper("<leader>ds", dap.step_into)
+			keyMapper("<leader>dq", ":lua require('dapui').close()<CR>")
+			keyMapper("<leader>do", ":lua require('dapui').toggle()<CR>")
 		end,
 	},
 	{
