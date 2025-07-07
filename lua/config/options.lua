@@ -7,7 +7,7 @@ opt.shiftwidth = 2
 opt.softtabstop = 2
 opt.expandtab = true
 opt.smartindent = true
-opt.wrap = false
+opt.wrap = true
 
 -- search
 opt.incsearch = true
@@ -22,7 +22,6 @@ opt.signcolumn = "yes"
 
 -- etc
 opt.encoding = "UTF-8"
-opt.cmdheight = 1
 opt.scrolloff = 10
 opt.mouse:append("a")
 opt.title = true
@@ -43,11 +42,11 @@ opt.mouse = ""
 -- vim.api
 -- last cursor location
 api.nvim_create_autocmd("BufReadPost", {
-	pattern = "*",
-	callback = function()
-		local last_pos = vim.fn.line("'\"")
-		if last_pos > 1 and last_pos <= vim.fn.line("$") then
-			vim.api.nvim_command('normal! g`"')
-		end
-	end,
+  pattern = "*",
+  callback = function()
+    local last_pos = vim.fn.line("'\"")
+    if last_pos > 1 and last_pos <= vim.fn.line("$") then
+      vim.api.nvim_command('normal! g`"')
+    end
+  end,
 })

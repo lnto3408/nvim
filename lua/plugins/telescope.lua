@@ -26,11 +26,11 @@ return {
 					border = true,
 					dynamic_preview_title = true,
 					layout_config = {
-						height = 0.95,
-						width = 0.9,
+						height = 1,
+						-- width = 0.9,
 						prompt_position = "bottom",
-						anchor = "edge",
-						preview_width = 0.6,
+						anchor = "CENTER",
+						-- preview_width = 0.6,
 					},
 				},
 				extensions = {

@@ -17,7 +17,7 @@ return {
 			local dap = require("dap")
 			local dapui = require("dapui")
 			require("telescope").load_extension("dap")
-			require("dap-python").setup("/usr/bin/python3")
+			require("dap-python").setup("/usr/bin/python3 ")
 			require("neodev").setup({
 				library = { plugins = { "nvim-dap-ui" }, types = true },
 			})
